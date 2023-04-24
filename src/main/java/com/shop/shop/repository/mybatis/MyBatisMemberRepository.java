@@ -17,6 +17,12 @@ public class MyBatisMemberRepository implements MemberRepository {
     private final MemberMapper memberMapper;
 
     @Override
+    public int joinChk(String memberId) {
+        int joinChk = memberMapper.joinChk(memberId);
+        return joinChk;
+    }
+
+    @Override
     public Member join(Member member) {
         memberMapper.join(member);
         return member;

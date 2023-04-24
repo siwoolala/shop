@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 560px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="py-5 text-center">
+        <h2>상품 상세</h2>
+    </div>
+
+    <!-- 추가 -->
+    <div>
+        <label for="memberId">회원 ID</label>
+        <input type="text" id="memberId" name="memberId" class="form-control" value="1" th:value="${board.memberId}" readonly>
+    </div>
+    <div>
+        <label for="subject">제목</label>
+        <input type="text" id="subject" name="subject" class="form-control" value="상품A" th:value="${board.subject}" readonly>
+    </div>
+    <div>
+        <label for="contents">내용</label>
+        <input type="text" id="contents" name="contents" class="form-control" value="10000" th:value="${board.contents}" readonly>
+    </div>
+    <div>
+        <label for="writerDate">날짜</label>
+        <input type="text" id="writerDate" name="writerDate" class="form-control" value="10" th:value="${board.writerDate}" readonly>
+    </div>
+    <div>
+        <label for="likeCount">좋아요</label>
+        <input type="text" id="likeCount" name="likeCount" class="form-control" value="10" th:value="${board.likeCount}" readonly>
+    </div>
+
+
+    <hr class="my-4">
+
+    <!-- 본인의 게시글이면 수정 -->
+    <div class="row">
+        <div class="col">
+            <button class="w-100 btn btn-primary btn-lg"
+                    onclick="location.href='editForm.html'"
+                    th:onclick="|location.href='@{/board/{memberId}/edit(memberId=${board.memberId})}'|"
+                    type="button">상품 수정</button>
+        </div>
+
+        <div class="col">
+            <button class="w-100 btn btn-secondary btn-lg"
+                    onclick="location.href='boards.html'"
+                    th:onclick="|location.href='@{/board}'|"
+                    type="button">목록으로</button>
+        </div>
+    </div>
+
+</div> <!-- /container -->
+</body>
+</html>

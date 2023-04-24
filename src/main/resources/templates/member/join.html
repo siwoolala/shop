@@ -9,6 +9,13 @@
  max-width: 560px;
  }
  </style>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script defer type="text/javascript" src="../js/member/join.js"></script>
+    <script defer type="text/javascript" src="../js/dateOption/dateOption.js"></script>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body>
 <div class="container">
@@ -16,7 +23,12 @@
         <h2>MemberJoin 화면 홈</h2>
     </div>
     <h4 class="mb-3">회원가입</h4>
-    <form action="" th:action th:object="${member}" method="post">
+    <form action="" th:action th:object="${member}" onsubmit="return checkPw();" method="post">
+
+        <div th:if="${errors?.containsKey('memberId')}">
+            <p class="field-error" th:text="${errors['memberId']}">아이디 메시지</p>
+        </div>
+
         <div>
             <label for="memberId">아이디</label>
             <input type="text" id="memberId" name="memberId" class="form-control" placeholder="이름을 입력하세요">
@@ -30,6 +42,10 @@
             <label for="name">이름</label>
             <input type="text" id="name" name="name" class="form-control" placeholder="이름을 입력하세요">
         </div>
+        <div>
+            <label for="birth">생년월일</label>
+            <input type="text" id="birth" name="birth" class="form-control" placeholder="생일을 입력하세요">
+        </div>
         <hr class="my-4">
         <div class="row">
             <div class="col">
@@ -38,7 +54,7 @@
             <div class="col">
                 <button class="w-100 btn btn-secondary btn-lg"
                         onclick="location.href='index.html'"
-                        th:onclick="|location.href='@{/index}'|"
+                        th:onclick="|location.href='@{/}'|"
                         type="button">취소</button>
             </div>
         </div>

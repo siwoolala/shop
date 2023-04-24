@@ -1,12 +1,14 @@
 package com.shop.shop;
 
-import com.shop.shop.config.MyBatisConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.ComponentScan;
 
-@Import(MyBatisConfig.class)
-@SpringBootApplication(scanBasePackages = "com.shop.shop.controller")
+//@Import(MyBatisConfig.class)
+@ComponentScan(basePackages = {"com.shop.shop.service"})
+@ComponentScan(basePackages = "com.shop.shop.repository")
+@ComponentScan(basePackages = "com.shop.shop.config")
+@SpringBootApplication(scanBasePackages = {"com.shop.shop.controller"})
 public class ShopApplication {
 
 	public static void main(String[] args) {

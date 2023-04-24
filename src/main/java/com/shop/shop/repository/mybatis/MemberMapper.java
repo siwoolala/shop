@@ -9,6 +9,10 @@ import java.util.Optional;
 @Mapper
 public interface MemberMapper {
 
+    // 아이디 중복 체크
+    int joinChk(String memberId);
+
+    // 회원가입
     void join(Member member);
 
     Member findById(Long sequence);
